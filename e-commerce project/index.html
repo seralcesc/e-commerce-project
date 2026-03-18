@@ -14,7 +14,7 @@
       </div>
       <div>
         <form>
-          <input type="text" placeholder="Busca tu cóctel...">
+          <input type="text" placeholder="Busca tu cóctel..." required>
           <button type="submit">Buscar</button>
         </form>
       </div>
@@ -27,7 +27,39 @@
       </nav>
     </header>
 
-    <main></main>
+    <main>
+      <section class="hero-inmersivo">
+        <a href="#recetas" class="hero-link">
+          <div class="hero-overlay">
+            <div class="hero-text">
+              <h2>¿Qué te apetece tomar hoy?</h2>
+              <p>Toca la copa para empezar a volar...</p>
+            </div>
+            <img src="assets/img/hero-cocktail.jpg" alt="Cóctel de autor en barra oscura"          
+          </div>   
+        </a>  
+      </section>
+      <section class="cocktail-grid">
+        <h2>Nuestras Mezclas Estrellas</h2>
+
+        <article class="cocktail-card">
+          <div class="card-img">
+            <img src="assets/img/mojito.jpg" alt="Mojito clásico con menta fresca"
+            <span class="tag">Refrescante</span>
+          </div>
+          <div class="card-info">
+            <h3>Mojito Cubano</h3>
+            <p class="ingredients">Ron, Lima, Menta, Azucar</p>
+            <div class="card-footer">
+              <span class="difficulty">Fácil</span>
+              <a href="#" class="view-recipe">Ver Receta</a>
+            </div>
+          </div>
+        </article>
+
+      </section>
+    </main>
+
     <footer></footer>
   </body>
 </html>
