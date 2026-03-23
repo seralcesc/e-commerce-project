@@ -1,0 +1,31 @@
+.logo h1 {
+  color: var(--color-primario);
+}
+
+.cocktail-grid {
+  display: flex; /* Flexbox */
+  flex-wrap: wrap; /* Si no caben en una fila, saltan a la siguiente*/
+  gap: 20px; /* Crea un espacio uniforme entre las tarjetas sin usar márgenes */
+  justify-content: center; /* Centra los cócteles si sobra espacio a los lados */
+  padding: 40px; /* aire alrededor de toda la sección */
+}
+
+.cocktail-card {
+  background-color: var(--color-tarjeta);
+  width: 280px; /* Un ancho fijo para que todas sean iguales */
+  border-radius: 8px; /* Bordes redondeados */
+  overflow: hidden; /* Para que la imagen no se salga de las esquinas redondeadas */
+  transition: transform 0.3s; /* Para que al pasar el ratón se mueva suavemente */
+  cursor: pointer;
+}
+
+/* Efecto "Hover"*/
+.cocktail-card:hover {
+  transform: translateY(-10px); /* La tarjeta sube un poquito */
+}
+
+.cocktail-card img {
+  width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
+  height: 200px;
+  object-fit: cover; /* Corta la imagen para que encaje sin deformarse */
+}
