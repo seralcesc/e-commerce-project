@@ -32,18 +32,72 @@ body {
   padding: 40px; /* aire alrededor de toda la sección */
 }
 
+/* El contenedor principal da la perspectiva */
 .cocktail-card {
-  background-color: var(--color-tarjeta);
+  background-color: transparent;
+  height: 400px; /* La altura fija hace que el giro se vea bien */
   width: 280px; /* Un ancho fijo para que todas sean iguales */
+  perspective: 1000px; /* Personaliza el efecto 3D */
   border-radius: 8px; /* Bordes redondeados */
-  overflow: hidden; /* Para que la imagen no se salga de las esquinas redondeadas */
   transition: transform 0.3s; /* Para que al pasar el ratón se mueva suavemente */
   cursor: pointer;
 }
 
-/* Efecto "Hover"*/
-.cocktail-card:hover {
-  transform: translateY(-10px); /* La tarjeta sube un poquito */
+/* El elemento que gira */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s; /* Velocidad del giro */
+  transform-style: preserve-3d; /* Mantiene el efecto 3D en las capas hijas */
+}
+
+/* Al pasar el ratón (o clic/focus), gira 180 grados */
+.cocktail-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Estilo común para ambas caras */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Oculta la cara que queda detrás al girar */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Cara Frontal */
+.card-front {
+  background-color: var(--color-tarjeta);
+  color: white;
+}
+
+/* Cara Trasera */
+.card-back {
+  background-color: var(--color-tarjeta);
+  color: white;
+  transform: rotateY(180deg); /* Ya nace girada para estar "de espaldas" */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid var(--color-primario); /* Un borde dorado para la receta */
+}
+
+.card-back ul {
+  list-style: none; /* Quita los puntos de la lista */
+  padding: 0;
+  margin: 15px 0;
+  text-align: left; /* Los ingredientes alineados a la izquierda */
+}
+
+.card-back li {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Una línea casi invisible */
 }
 
 .cocktail-card img {
