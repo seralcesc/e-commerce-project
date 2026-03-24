@@ -11,7 +11,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Tamaño de las cajas */
+  box-sizing: border-box; /* Tamaño total de las cajas */
 }
 
 body {
@@ -24,7 +24,7 @@ header {
   display: flex; /* Todo en fila */
   justify-content: space-between; /* Logo a la izquierda, Buscador al centro, Nav a la derecha */
   align-items: center; /* Centrados verticalmente */
-  padding: 15px 50px; /* Espacio por dentro (aire) */
+  padding: 15px 50px; /* Espacio por dentro */
   background-color: var(--color-tarjeta);
   border-bottom: 1px solid #333;
   position: sticky; /* Se queda pegado arriba al hacer scroll */
@@ -32,10 +32,10 @@ header {
   z-index: 1000; /* Siempre por encima de todo */
 }
 
-/* 2. El Buscador (Formulario) */
+/* 2. Buscador */
 header form {
   display: flex; /* El input y el botón en fila */
-  gap: 0; /* Pegaditos */
+  gap: 0; /* Juntos */
 }
 
 header input {
@@ -57,15 +57,15 @@ header button {
   cursor: pointer;
 }
 
-/* 3. La Navegación (Enlaces) */
+/* 3. Nav Enlaces */
 header nav ul {
-  display: flex; /* Los enlaces en fila */
-  list-style: none; /* Quitamos los puntitos de la lista */
+  display: flex; /* En fila */
+  list-style: none; /* Quita los puntos de la lista */
   gap: 25px; /* Espacio entre ellos */
 }
 
 header nav a {
-  text-decoration: none; /* Quitamos el subrayado azul */
+  text-decoration: none; /* Quita el subrayado azul */
   color: var(--color-texto);
   font-size: 0.9rem;
   font-weight: 500;
@@ -217,7 +217,7 @@ header nav a:hover {
 
 .card-front img {
   width: 100%;
-  height: 100%; /* Ahora la imagen ocupa toda la tarjeta */
+  height: 100%; /* La imagen ocupa toda la tarjeta */
   object-fit: cover;
 }
 
@@ -226,11 +226,11 @@ header nav a:hover {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 25px 15px; /* Un poco más de aire abajo */
+  padding: 25px 15px;
   background: linear-gradient(
     transparent,
     rgba(0, 0, 0, 0.9)
-  ); /* Degradado más oscuro para leer mejor */
+  ); /* Degradado más oscuro */
   text-align: center;
 }
 
@@ -241,7 +241,7 @@ header nav a:hover {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* --- CARA TRASERA (Provisional) --- */
+/* --- CARA TRASERA (Estructura Base) --- */
 .card-back {
   background-color: var(--color-tarjeta);
   color: white;
@@ -249,20 +249,102 @@ header nav a:hover {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   border: 2px solid var(--color-primario);
+  position: relative; /* Posiciona el header dentro */
 }
 
-/* (Las listas de la trasera las mantendremos así hasta el Paso 2) */
+/* Cabecera: Dificultad y Corazón */
+.card-back-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px; /* Espacio con lo de abajo */
+}
+
+.difficulty-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--color-primario);
+  border: 1px solid var(--color-primario);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Sección de sabor con líneas laterales */
+.flavor-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.flavor-info hr {
+  flex: 1;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.flavor-info span {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-texto-suave);
+  white-space: nowrap;
+}
+
+/* --- LISTA DE INGREDIENTES --- */
+/* 1. El contenedor que empuja hacia el centro */
+.ingredients-container {
+  margin: auto 0;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 2. El título de la sección */
+.ingredients-container h3 {
+  font-size: 1.1rem;
+  color: var(--color-texto);
+  border-left: 3px solid var(--color-primario);
+  padding-left: 8px;
+  margin: 0;
+}
+
+/* 3. La lista (ahora con margen 0 porque el padre hace el trabajo) */
 .card-back ul {
   list-style: none;
   padding: 0;
-  margin: 15px 0;
-  text-align: left;
+  margin: 0;
 }
 
+/* 4. Los items de la lista */
 .card-back li {
+  font-size: 0.85rem;
+  padding: 5px 0;
+  color: var(--color-texto-suave);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-details-container {
+  margin-top: auto; /* Empuja el botón hacia el fondo de la tarjeta */
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.view-recipe {
+  text-decoration: none;
+  color: var(
+    --color-primario
+  ); /* Usamos el amarillo para que resalte como acción */
   font-size: 0.9rem;
-  margin-bottom: 5px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: bold;
+  transition: letter-spacing 0.3s;
+}
+
+.view-recipe:hover {
+  letter-spacing: 1px; /* Un pequeño efecto al pasar el ratón */
 }
