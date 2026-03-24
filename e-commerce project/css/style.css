@@ -181,126 +181,88 @@ header nav a:hover {
 /* El contenedor principal da la perspectiva */
 .cocktail-card {
   background-color: transparent;
-  height: 400px; /* La altura fija hace que el giro se vea bien */
-  width: 280px; /* Un ancho fijo para que todas sean iguales */
-  perspective: 1000px; /* Personaliza el efecto 3D */
-  border-radius: 8px; /* Bordes redondeados */
-  transition: transform 0.3s; /* Para que al pasar el ratón se mueva suavemente */
+  height: 400px;
+  width: 280px;
+  perspective: 1000px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-/* El elemento que gira */
 .card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  text-align: center;
-  transition: transform 0.8s; /* Velocidad del giro */
-  transform-style: preserve-3d; /* Mantiene el efecto 3D en las capas hijas */
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
 }
 
-/* Al pasar el ratón (o clic/focus), gira 180 grados */
 .cocktail-card:hover .card-inner {
   transform: rotateY(180deg);
 }
 
-/* Estilo común para ambas caras */
 .card-front,
 .card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Oculta la cara que queda detrás al girar */
+  backface-visibility: hidden;
   border-radius: 8px;
   overflow: hidden;
 }
 
-/* Cara Frontal */
+/* --- CARA FRONTAL --- */
 .card-front {
   background-color: var(--color-tarjeta);
-  color: white;
 }
 
-/* Cara Trasera */
+.card-front img {
+  width: 100%;
+  height: 100%; /* Ahora la imagen ocupa toda la tarjeta */
+  object-fit: cover;
+}
+
+/* Bloque de nombre en el frontal */
+.card-front-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 25px 15px; /* Un poco más de aire abajo */
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.9)
+  ); /* Degradado más oscuro para leer mejor */
+  text-align: center;
+}
+
+.card-front-info h3 {
+  color: var(--color-primario);
+  margin: 0;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* --- CARA TRASERA (Provisional) --- */
 .card-back {
   background-color: var(--color-tarjeta);
   color: white;
-  transform: rotateY(180deg); /* Ya nace girada para estar "de espaldas" */
+  transform: rotateY(180deg);
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 2px solid var(--color-primario); /* Un borde dorado para la receta */
+  border: 2px solid var(--color-primario);
 }
 
+/* (Las listas de la trasera las mantendremos así hasta el Paso 2) */
 .card-back ul {
-  list-style: none; /* Quita los puntos de la lista */
+  list-style: none;
   padding: 0;
   margin: 15px 0;
-  text-align: left; /* Los ingredientes alineados a la izquierda */
+  text-align: left;
 }
 
 .card-back li {
   font-size: 0.9rem;
   margin-bottom: 5px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Una línea casi invisible */
-}
-
-.cocktail-card img {
-  width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
-  height: 200px;
-  object-fit: cover; /* Corta la imagen para que encaje sin deformarse */
-}
-
-.tag {
-  background-color: var(--color-primario);
-  color: #000; /* Texto negro */
-  padding: 4px 8px; /* 4px arriba/abajo, 8px izquierda/derecha */
-  border-radius: 4px; /* Un toque redondeado */
-  font-size: 0.75rem; /* Un poco más pequeño que el texto normal (1rem = 16px) */
-  font-weight: bold; /* Texto en negrita */
-  text-transform: uppercase; /* Todo en mayúsculas */
-  position: absolute;
-  top: 10px; /* 10 píxeles de separación desde el borde de arriba */
-  right: 10px; /* 10 píxeles de separación desde el borde derecho */
-}
-
-.card-info {
-  padding: 15px; /* Espacio de la tarjeta respecto al borde*/
-}
-
-.card-info h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px; /* Separamos el título de los ingredientes */
-  color: var(--color-texto);
-}
-
-.card-info .ingredients {
-  font-size: 0.9rem;
-  color: var(--color-texto-suave);
-  margin-bottom: 15px;
-}
-
-.card-footer {
-  display: flex;
-  justify-content: space-between; /* Empuja un elemento a la izquierda y otro a la derecha */
-  align-items: center; /* Los alinea verticalmente para que no queden escalonados */
-  border-top: 1px solid #333; /* Una línea sutil de separación en el borde superior */
-  padding-top: 10px;
-}
-
-.difficulty {
-  font-size: 0.8rem;
-  color: var(--color-primario);
-}
-
-.view-recipe {
-  text-decoration: none;
-  color: var(--color-texto);
-  font-size: 0.85rem;
-  font-weight: bold;
-}
-
-.view-recipe:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
