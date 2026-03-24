@@ -140,6 +140,36 @@ header nav a:hover {
   color: var(--color-primario);
 }
 
+.daily-selection {
+  padding: 60px 20px;
+  background: linear-gradient(180deg, var(--color-fondo) 0%, #1a1a1e 100%);
+  text-align: center;
+}
+
+.section-header h2 {
+  color: var(--color-primario);
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.section-header p {
+  color: var(--color-texto-suave);
+  margin-bottom: 30px;
+}
+
+/* Centra la tarjeta del día */
+.daily-card-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Hace que la tarjeta del día brille un poco más */
+.daily-featured {
+  border: 2px solid var(--color-primario);
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
+  transform: scale(1.05); /* Aumenta el tamaño respecto a las demás */
+}
+
 .cocktail-grid {
   display: flex; /* Flexbox */
   flex-wrap: wrap; /* Si no caben en una fila, saltan a la siguiente*/
