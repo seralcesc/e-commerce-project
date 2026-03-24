@@ -348,3 +348,35 @@ header nav a:hover {
 .view-recipe:hover {
   letter-spacing: 1px; /* Un pequeño efecto al pasar el ratón */
 }
+
+/* Botón de favoritos */
+.favorite-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.heart-icon {
+  font-size: 1.5rem; /* Tamaño del corazón */
+  color: var(--color-texto-suave); /* Empezamos con un gris suave */
+  transition:
+    color 0.3s,
+    transform 0.3s;
+}
+
+/* Efecto al pasar el ratón */
+.favorite-btn:hover .heart-icon {
+  color: #ff4d4d; /* Se vuelve rojizo antes de hacer click */
+  transform: scale(1.2); /* Crece un poquito */
+}
+
+/* Clase preparada para el futuro (cuando se haga click) */
+.favorite-btn.active .heart-icon {
+  color: #ff0000; /* Rojo intenso */
+  content: "\2665"; /* Cambiaría a corazón relleno (esto se haría con JS) */
+}
