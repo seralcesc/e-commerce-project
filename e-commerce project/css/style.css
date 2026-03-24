@@ -380,3 +380,63 @@ header nav a:hover {
   color: #ff0000; /* Rojo intenso */
   content: "\2665"; /* Cambiaría a corazón relleno (esto se haría con JS) */
 }
+
+/* --- PÁGINA DE COCTELERA (CATÁLOGO) --- */
+
+/* 1. Contenedor General */
+.catalog-container {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto; /* Centra todo el contenido en pantallas grandes */
+}
+
+/* 2. Cabecera del catálogo */
+.library-header h1 {
+  font-size: 2.5rem;
+  color: var(--color-primario);
+  margin-bottom: 10px;
+}
+
+/* 3. Barra de Filtros */
+.filters-bar {
+  margin-bottom: 50px; /* Espacio antes de que empiecen las fotos */
+}
+
+.filter-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap; /* Para que en el móvil no se salgan de la pantalla */
+}
+
+.filter-btn {
+  background-color: var(--color-tarjeta);
+  color: var(--color-texto);
+  border: 1px solid #333;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primario);
+  color: var(--color-primario);
+}
+
+.filter-btn.active {
+  background-color: var(--color-primario);
+  color: #000; /* Texto negro para que contraste con el amarillo */
+  font-weight: bold;
+  border-color: var(--color-primario);
+}
+
+/* 4. La Rejilla Automática (Grid) */
+.catalog-grid {
+  display: grid;
+  /* Crea columnas de al menos 280px y rellena el espacio automáticamente */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 40px 25px; /* 40px de espacio entre filas, 25px entre columnas */
+  justify-items: center; /* Centra las tarjetas dentro de su celda */
+}

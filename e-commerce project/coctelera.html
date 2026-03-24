@@ -2,17 +2,258 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Coctelera | CocktailHub.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coctelera | CocktailHub</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
+
   <body>
-    <main>
-      <section class="library-header">
+    <header>
+      <div class="logo">
+        <h1>CocktailHub</h1>
+      </div>
+      <form>
+        <input type="text" placeholder="Busca tu cóctel..." required />
+        <button type="submit">Buscar</button>
+      </form>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li>
+            <a href="coctelera.html" style="color: var(--color-primario)"
+              >Coctelera</a
+            >
+          </li>
+          <li><a href="#">Entrar</a></li>
+          <li><a href="#">Favoritos</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="catalog-container">
+      <section
+        class="library-header"
+        style="text-align: center; margin-bottom: 30px"
+      >
         <h1>Nuestra Coctelera</h1>
-        <p>Explora la colección completa y filtra por tus gustos.</p>
+        <p style="color: var(--color-texto-suave)">
+          Explora la colección completa y filtra por tus gustos.
+        </p>
       </section>
 
-      <section class="cocktail-grid" id="full-library"></section>
+      <section class="filters-bar">
+        <div class="filter-group">
+          <button class="filter-btn active">Todos</button>
+          <button class="filter-btn">Ron</button>
+          <button class="filter-btn">Tequila</button>
+          <button class="filter-btn">Lima</button>
+          <button class="filter-btn">Menta</button>
+          <button class="filter-btn">Sin Alcohol</button>
+          <button class="filter-btn">Dificultad Fácil</button>
+          <button class="filter-btn">Dificultad Media</button>
+          <button class="filter-btn">Dificultad Pro</button>
+        </div>
+      </section>
+
+      <section class="catalog-grid">
+        <article class="cocktail-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-img">
+                <img src="assets/img/mojito.jpg" alt="Mojito Cubano" />
+              </div>
+              <div class="card-front-info">
+                <h3>Mojito Cubano</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-back-header">
+                <span class="difficulty-tag">Fácil</span>
+                <button class="favorite-btn" title="Añadir a favoritos">
+                  <span class="heart-icon">&#9825;</span>
+                </button>
+              </div>
+              <div class="flavor-info">
+                <hr />
+                <span>Dulce & Afrutado</span>
+                <hr />
+              </div>
+              <div class="ingredients-container">
+                <h3>Ingredientes</h3>
+                <ul>
+                  <li>60ml Ron Blanco</li>
+                  <li>30ml Zumo de Lima</li>
+                  <li>Menta fresca</li>
+                  <li>Azúcar y Soda</li>
+                </ul>
+              </div>
+
+              <div class="card-details-container">
+                <a href="#" class="view-recipe">Más detalles →</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cocktail-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-img">
+                <img src="assets/img/old-fashioned.jpg" alt="Old Fashioned" />
+              </div>
+              <div class="card-front-info">
+                <h3>Old Fashioned</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-back-header">
+                <span class="difficulty-tag">Difícil</span>
+                <button class="favorite-btn" title="Añadir a favoritos">
+                  <span class="heart-icon">&#9825;</span>
+                </button>
+              </div>
+              <div class="flavor-info">
+                <hr />
+                <span>Fuerte & Amargo</span>
+                <hr />
+              </div>
+              <div class="ingredients-container">
+                <h3>Ingredientes</h3>
+                <ul>
+                  <li>60ml Bourbon</li>
+                  <li>2 gotas de Angostura</li>
+                  <li>1 terrón de Azúcar</li>
+                  <li>Piel de naranja</li>
+                </ul>
+              </div>
+              <div class="card-details-container">
+                <a href="#" class="view-recipe">Más detalles →</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cocktail-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-img">
+                <img src="assets/img/margarita.jpg" alt="Margarita" />
+              </div>
+              <div class="card-front-info">
+                <h3>Margarita</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-back-header">
+                <span class="difficulty-tag">Media</span>
+                <button class="favorite-btn" title="Añadir a favoritos">
+                  <span class="heart-icon">&#9825;</span>
+                </button>
+              </div>
+              <div class="flavor-info">
+                <hr />
+                <span>Cítrico & Salado</span>
+                <hr />
+              </div>
+              <div class="ingredients-container">
+                <h3>Ingredientes</h3>
+                <ul>
+                  <li>50ml Tequila</li>
+                  <li>20ml Triple Seco</li>
+                  <li>15ml Zumo de Lima</li>
+                  <li>Sal en el borde</li>
+                </ul>
+              </div>
+              <div class="card-details-container">
+                <a href="#" class="view-recipe">Más detalles →</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cocktail-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-img">
+                <img
+                  src="assets/img/caipirinha.jpg"
+                  alt="Caipirinha Brasileña"
+                />
+              </div>
+              <div class="card-front-info">
+                <h3>Caipirinha</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-back-header">
+                <span class="difficulty-tag">Fácil</span>
+                <button class="favorite-btn" title="Añadir a favoritos">
+                  <span class="heart-icon">&#9825;</span>
+                </button>
+              </div>
+              <div class="flavor-info">
+                <hr />
+                <span>Cítrico & Fuerte</span>
+                <hr />
+              </div>
+              <div class="ingredients-container">
+                <h3>Ingredientes</h3>
+                <ul>
+                  <li>60ml Cachaça</li>
+                  <li>1 Lima en trozos</li>
+                  <li>2 cdtas Azúcar</li>
+                  <li>Hielo picado</li>
+                </ul>
+              </div>
+              <div class="card-details-container">
+                <a href="#" class="view-recipe">Más detalles →</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cocktail-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-img">
+                <img src="assets/img/daiquiri.jpg" alt="Daiquiri de Fresa" />
+              </div>
+              <div class="card-front-info">
+                <h3>Daiquiri de Fresa</h3>
+              </div>
+            </div>
+
+            <div class="card-back">
+              <div class="card-back-header">
+                <span class="difficulty-tag">Fácil</span>
+                <button class="favorite-btn" title="Añadir a favoritos">
+                  <span class="heart-icon">&#9825;</span>
+                </button>
+              </div>
+
+              <div class="flavor-info">
+                <hr />
+                <span>Dulce & Refrescante</span>
+                <hr />
+              </div>
+
+              <div class="ingredients-container">
+                <h3>Ingredientes</h3>
+                <ul>
+                  <li>50ml Ron Blanco</li>
+                  <li>25ml Zumo de lima</li>
+                  <li>3 Fresas naturales</li>
+                  <li>Hielo picado</li>
+                </ul>
+              </div>
+
+              <div class="card-details-container">
+                <a href="#" class="view-recipe">Más detalles →</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
     </main>
   </body>
 </html>
