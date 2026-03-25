@@ -1,0 +1,341 @@
+:root {
+  --color-fondo: #0f0f12; /* El negro de fondo */
+  --color-tarjeta: #1a1a1e; /* Un gris oscuro para las cards */
+  --color-primario: #ffcc00; /* El amarillo de Cócteles */
+  --color-texto: #ffffff; /* Blanco para leer bien */
+  --color-texto-suave: #a0a0a0; /* Gris para textos menos importantes */
+}
+
+/* Estilos Globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: var(--color-tarjeta);
+  border-bottom: 1px solid #333;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Buscador */
+header form {
+  display: flex;
+  gap: 0;
+}
+
+header input {
+  padding: 8px 15px;
+  border-radius: 20px 0 0 20px;
+  border: 1px solid #444;
+  background-color: var(--color-fondo);
+  color: white;
+  outline: none;
+  width: 250px;
+}
+
+header button {
+  padding: 8px 15px;
+  border-radius: 0 20px 20px 0;
+  border: none;
+  background-color: var(--color-primario);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Nav Enlaces */
+header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+header nav a {
+  text-decoration: none;
+  color: var(--color-texto);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+header nav a:hover {
+  color: var(--color-primario);
+}
+
+.logo h1 {
+  color: var(--color-primario);
+}
+
+/* Contenedor General */
+.catalog-container {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto; /* Centra todo el contenido en pantallas grandes */
+}
+
+/* Cabecera del catálogo */
+.library-header h1 {
+  font-size: 2.5rem;
+  color: var(--color-primario);
+  margin-bottom: 10px;
+}
+
+/* Barra de Filtros */
+.filters-bar {
+  margin-bottom: 50px; /* Espacio antes de que empiecen las fotos */
+}
+
+.filter-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap; /* Para que en el móvil no se salgan de la pantalla */
+}
+
+.filter-btn {
+  background-color: var(--color-tarjeta);
+  color: var(--color-texto);
+  border: 1px solid #333;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primario);
+  color: var(--color-primario);
+}
+
+.filter-btn.active {
+  background-color: var(--color-primario);
+  color: #000; /* Texto negro para que contraste con el amarillo */
+  font-weight: bold;
+  border-color: var(--color-primario);
+}
+
+/* Rejilla responsiva (Grid) */
+.catalog-grid {
+  display: grid;
+  /* Crea columnas de al menos 280px y rellena el espacio automáticamente */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 40px 25px; /* 40px de espacio entre filas, 25px entre columnas */
+  justify-items: center; /* Centra las tarjetas dentro de su celda */
+}
+
+/* El contenedor principal / perspectiva */
+.cocktail-card {
+  background-color: transparent;
+  height: 400px;
+  width: 280px;
+  perspective: 1000px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.cocktail-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* --- CARA FRONTAL --- */
+.card-front {
+  background-color: var(--color-tarjeta);
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%; /* La imagen ocupa toda la tarjeta */
+  object-fit: cover;
+}
+
+/* Bloque de nombre en el frontal */
+.card-front-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 25px 15px;
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.9)
+  ); /* Degradado más oscuro */
+  text-align: center;
+}
+
+.card-front-info h3 {
+  color: var(--color-primario);
+  margin: 0;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* --- CARA TRASERA (Estructura Base) --- */
+.card-back {
+  background-color: var(--color-tarjeta);
+  color: white;
+  transform: rotateY(180deg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 2px solid var(--color-primario);
+  position: relative; /* Posiciona el header dentro */
+}
+
+/* Cabecera: Dificultad y Corazón */
+.card-back-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px; /* Espacio con lo de abajo */
+}
+
+.difficulty-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--color-primario);
+  border: 1px solid var(--color-primario);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Sección de sabor con líneas laterales */
+.flavor-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.flavor-info hr {
+  flex: 1;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.flavor-info span {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-texto-suave);
+  white-space: nowrap;
+}
+
+/* --- LISTA DE INGREDIENTES --- */
+/* 1. El contenedor que empuja hacia el centro */
+.ingredients-container {
+  margin: auto 0;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 2. El título de la sección */
+.ingredients-container h3 {
+  font-size: 1.1rem;
+  color: var(--color-texto);
+  border-left: 3px solid var(--color-primario);
+  padding-left: 8px;
+  margin: 0;
+}
+
+/* 3. La lista (ahora con margen 0 porque el padre hace el trabajo) */
+.card-back ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 4. Los items de la lista */
+.card-back li {
+  font-size: 0.85rem;
+  padding: 5px 0;
+  color: var(--color-texto-suave);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-details-container {
+  margin-top: auto; /* Empuja el botón hacia el fondo de la tarjeta */
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.view-recipe {
+  text-decoration: none;
+  color: var(
+    --color-primario
+  ); /* Usamos el amarillo para que resalte como acción */
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: letter-spacing 0.3s;
+}
+
+.view-recipe:hover {
+  letter-spacing: 1px; /* Un pequeño efecto al pasar el ratón */
+}
+
+/* Botón de favoritos */
+.favorite-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.heart-icon {
+  font-size: 1.5rem; /* Tamaño del corazón */
+  color: var(--color-texto-suave); /* Empezamos con un gris suave */
+  transition:
+    color 0.3s,
+    transform 0.3s;
+}
+
+/* Efecto al pasar el ratón */
+.favorite-btn:hover .heart-icon {
+  color: #ff4d4d; /* Se vuelve rojizo antes de hacer click */
+  transform: scale(1.2); /* Crece un poquito */
+}
+
+/* Clase preparada para el futuro (cuando se haga click) */
+.favorite-btn.active .heart-icon {
+  color: #ff0000; /* Rojo intenso */
+  content: "\2665"; /* Cambiaría a corazón relleno (esto se haría con JS) */
+}
