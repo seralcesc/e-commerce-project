@@ -137,10 +137,10 @@ header nav a:hover {
   justify-items: center; /* Centra las tarjetas dentro de su celda */
 }
 
-/* El contenedor principal / perspectiva */
+/* Estructura del contenedor principal / perspectiva */
 .cocktail-card {
   background-color: transparent;
-  height: 400px;
+  height: 300px;
   width: 280px;
   perspective: 1000px;
   border-radius: 8px;
@@ -185,19 +185,25 @@ header nav a:hover {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 25px 15px;
+  padding: 15px 10px;
   background: linear-gradient(
-    transparent,
-    rgba(0, 0, 0, 0.9)
-  ); /* Degradado más oscuro */
+    /*degradado con puntos de parada intermedios (stops)*/ to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.7) 30%,
+    rgba(0, 0, 0, 0.3) 60%,
+    rgba(0, 0, 0, 0.1) 80%,
+    transparent 100%
+  );
   text-align: center;
 }
 
 .card-front-info h3 {
+  transform: translateY(15px); /*baja el texto*/
   color: var(--color-primario);
-  margin: 0;
   font-size: 1.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow:
+    0 0 10px rgba(255, 204, 0, 0.7),
+    0 0 20px rgba(0, 0, 0, 0.8);
 }
 
 /* --- CARA TRASERA (Estructura Base) --- */
@@ -205,12 +211,10 @@ header nav a:hover {
   background-color: var(--color-tarjeta);
   color: white;
   transform: rotateY(180deg);
-  padding: 20px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   border: 2px solid var(--color-primario);
-  position: relative; /* Posiciona el header dentro */
 }
 
 /* Cabecera: Dificultad y Corazón */
@@ -218,8 +222,7 @@ header nav a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  margin-bottom: 15px; /* Espacio con lo de abajo */
+  margin-bottom: 5px; /* Espacio con lo de abajo */
 }
 
 .difficulty-tag {
@@ -236,8 +239,8 @@ header nav a:hover {
 .flavor-info {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 8px;
+  margin: auto 0;
 }
 
 .flavor-info hr {
@@ -254,30 +257,20 @@ header nav a:hover {
 }
 
 /* --- LISTA DE INGREDIENTES --- */
-/* 1. El contenedor que empuja hacia el centro */
+/* 1. Contenedor de ingredientes */
 .ingredients-container {
-  margin: auto 0;
-  text-align: left;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  margin-bottom: 15px;
 }
-
 /* 2. El título de la sección */
 .ingredients-container h3 {
   font-size: 1.1rem;
-  color: var(--color-texto);
   border-left: 3px solid var(--color-primario);
   padding-left: 8px;
-  margin: 0;
 }
 
-/* 3. La lista (ahora con margen 0 porque el padre hace el trabajo) */
+/* 3. La lista */
 .card-back ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 /* 4. Los items de la lista */
@@ -289,23 +282,20 @@ header nav a:hover {
 }
 
 .card-details-container {
-  margin-top: auto; /* Empuja el botón hacia el fondo de la tarjeta */
+  margin-top: 1px; /* Empuja el botón hacia el fondo de la tarjeta */
   text-align: center;
-  padding-bottom: 10px;
 }
 
 .view-recipe {
   text-decoration: none;
-  color: var(
-    --color-primario
-  ); /* Usamos el amarillo para que resalte como acción */
+  color: var(--color-primario);
   font-size: 0.9rem;
   font-weight: bold;
   transition: letter-spacing 0.3s;
 }
 
 .view-recipe:hover {
-  letter-spacing: 1px; /* Un pequeño efecto al pasar el ratón */
+  letter-spacing: 1px; /* Efecto al pasar el ratón */
 }
 
 /* Botón de favoritos */
@@ -313,7 +303,6 @@ header nav a:hover {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -322,7 +311,7 @@ header nav a:hover {
 
 .heart-icon {
   font-size: 1.5rem; /* Tamaño del corazón */
-  color: var(--color-texto-suave); /* Empezamos con un gris suave */
+  color: var(--color-texto-suave); /* Color gris */
   transition:
     color 0.3s,
     transform 0.3s;
@@ -337,5 +326,5 @@ header nav a:hover {
 /* Clase preparada para el futuro (cuando se haga click) */
 .favorite-btn.active .heart-icon {
   color: #ff0000; /* Rojo intenso */
-  content: "\2665"; /* Cambiaría a corazón relleno (esto se haría con JS) */
+  content: "\2665"; /* Cambiaría a corazón relleno */
 }
